@@ -32,11 +32,11 @@ def player_input():
         player2 = list([input('Player 2: '), 'X'])
     else:
         player2 = list([input('Player 2: '), 'O'])
+        
 def display_board(board):
     '''
     DESCRIPTION: Tic Toe board graphics
     '''
-    print('\n'*100)
     display_board = ['#',1,2,3,4,5,6,7,8,9]
     i = range(1,10)
     for index in i:
@@ -45,10 +45,40 @@ def display_board(board):
         else:
             print(' {} \n'.format(board[index]))
     
-def place_marker(board, position,player):
+def place_marker(board, marker, position):
     '''
     DESCRIPTION: Function to place a marker
     '''
+    ##print("{}'s Turn, please select a position: ".format(player)
+    board[position] = marker
+    
+def win_check(board, marker):
+    '''
+    DESCRIPTION: Checks for a winner
+    '''
+    won_counter = 0
+    for upper_markers in board:
+        if won_counter < 3:    
+            if board[upper_markers] == marker:
+                won_counter += 1
+            else won_counter = 0
+        else  return "Winner!"
+    
+    for vertical in board:
+        if board
+    
+    
+    if board[1] == marker:
+        if board[5] == marker:
+            if board[9] == marker:
+                return "Winner!"
+    if board[3] == marker:
+        if board[5] == marker:
+            if board[7] == marker:
+                return "Winner!"
+    
+                
+    
 
 
 startmenu()
