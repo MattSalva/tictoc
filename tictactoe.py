@@ -45,7 +45,7 @@ def display_board(board):
         else:
             print(' {} \n'.format(board[index]))
     
-def place_marker(board, position):
+def place_marker(board, position,player):
     '''
     DESCRIPTION: Function to place a marker
     '''
