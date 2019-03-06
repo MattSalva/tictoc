@@ -56,28 +56,72 @@ def win_check(board, marker):
     '''
     DESCRIPTION: Checks for a winner
     '''
-    won_counter = 0
-    for upper_markers in board:
-        if won_counter < 3:    
-            if board[upper_markers] == marker:
-                won_counter += 1
-            else won_counter = 0
-        else  return "Winner!"
+    wincounter = 0
+    win = False
+    for elements in board:
+        if elements == marker:
+            wincounter += 1
+            if wincounter == 3: 
+                win = True
+                break
+        else:
+            wincounter = 0
+            
+    if win:
+        return win
     
-    for vertical in board:
-        if board
+    for elements in board[1:10:3]:
+        if elements == marker:
+            win = True
+        else:
+            win = False
+            break
+    if win:
+        return win 
+        
+    for elements in board[2:10:3]:
+        if elements == marker:
+            win = True
+        else:
+            win = False
+            break
+            
+    if win:
+        return win
     
+    for elements in board[3:10:3]:
+        if elements == marker:
+            win = True
+        else:
+            win = False
     
-    if board[1] == marker:
-        if board[5] == marker:
-            if board[9] == marker:
-                return "Winner!"
-    if board[3] == marker:
-        if board[5] == marker:
-            if board[7] == marker:
-                return "Winner!"
+    if win:
+        return win
     
-                
+    for elements in board[3:9:2]:
+        if elements == marker:
+            win = True
+        else:
+            win = False
+    if win:
+        return win
+    
+    for elements in board[1:10:3]:
+        if elements == marker:
+            win = True
+        else:
+            win = False
+    return False
+
+import random
+def choose_first():
+    '''
+    DESCRIPTION: Asigns first turn randomly
+    '''
+    if random.randint(1,2) == 1:
+        return player1[0]
+    else:
+        return player2[0]
     
 
 
