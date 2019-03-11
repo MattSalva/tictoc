@@ -158,7 +158,7 @@ def player_choice(board):
     '''
     :DESCRIPTION: Indicates if there's a free spot selected by the player
     :param board:
-    :return: Bool for available slot
+    :return: Int for available slot
     '''
     position = int(input("Please enter the position: ")
     if space_check(board, position):
@@ -195,18 +195,143 @@ while True:
             player1, player2 = player_input()
             #Random first turn selection
             if choose_first() == 1:
+                board = ['#',1,2,3,4,5,6,7,8,9]
                 print(f'{player1[0]} goes first')
 
                 time.sleep(5)
 
-                print(chr(27) + "[2J")
-                display_board()
+                while True:
 
-                
+                    print(chr(27) + "[2J")
+                    display_board(board)
+
+                    time.sleep(5)
 
 
+                    valid_pos = player_choice(board)
+
+                    if valid_pos in range(1,9):
+                        place_marker(board,player1[1],valid_pos)
+                    else:
+                        print(valid_pos)
+                        continue
+
+                    print(chr(27) + "[2J")
+                    display_board(board)
+
+                    if win_check(board,player1[1]):
+                        print(f"{player1[0]} wins!")
+                        time.sleep(5)
+                        break
+                    else:
+                        pass
+
+                    if full_board_check(board):
+                        print("Draw!")
+                        break
+                    else:
+                        pass
+
+                    print(chr(27) + "[2J")
+                    display_board(board)
+
+                    time.sleep(5)
+
+                    valid_pos = player_choice(board)
+
+                    if valid_pos in range(1, 9):
+                        place_marker(board, player2[1], valid_pos)
+                    else:
+                        print(valid_pos)
+                        continue
+
+                    print(chr(27) + "[2J")
+                    display_board(board)
+
+                    if win_check(board, player2[1]):
+                        print(f"{player2[0]} wins!")
+                        time.sleep(5)
+                        break
+                    else:
+                        pass
+
+                    if full_board_check(board):
+                        print("Draw!")
+                        break
+                    else:
+                        continue
 
 
+            else:
+                board = ['#', 1, 2, 3, 4, 5, 6, 7, 8, 9]
+                print(f'{player2[0]} goes first')
+
+                time.sleep(5)
+
+                while True:
+
+                    print(chr(27) + "[2J")
+                    display_board(board)
+
+                    time.sleep(5)
+
+                    valid_pos = player_choice(board)
+
+                    if valid_pos in range(1, 9):
+                        place_marker(board, player2[1], valid_pos)
+                    else:
+                        print(valid_pos)
+                        continue
+
+                    print(chr(27) + "[2J")
+                    display_board(board)
+
+                    if win_check(board, player2[1]):
+                        print(f"{player2[0]} wins!")
+                        time.sleep(5)
+                        break
+                    else:
+                        pass
+
+                    if full_board_check(board):
+                        print("Draw!")
+                        break
+                    else:
+                        pass
+
+                    print(chr(27) + "[2J")
+                    display_board(board)
+
+                    time.sleep(5)
+
+                    valid_pos = player_choice(board)
+
+                    if valid_pos in range(1, 9):
+                        place_marker(board, player1[1], valid_pos)
+                    else:
+                        print(valid_pos)
+                        continue
+
+                    print(chr(27) + "[2J")
+                    display_board(board)
+
+                    if win_check(board, player1[1]):
+                        print(f"{player1[0]} wins!")
+                        time.sleep(5)
+                        break
+                    else:
+                        pass
+
+                    if full_board_check(board):
+                        print("Draw!")
+                        break
+                    else:
+                        continue
+
+            if replay():
+                continue
+            else:
+                break
     else:
         break
 
